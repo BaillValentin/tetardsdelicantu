@@ -74,6 +74,41 @@ def score(c):
     if ar > 2.2 or ar < 0.5: s -= 3
     return s
 
+def extra(n=12):
+    """Targeted searches from tools/extra_queries.tsv (slug<TAB>search query)."""
+    out = {}
+    for line in open("tools/extra_queries.tsv", encoding="utf-8"):
+        slug, q = line.rstrip("\n").split("\t")
+        d = get({"action": "query", "list": "search", "srsearch": q + " filetype:bitmap",
+                 "srnamespace": "6", "srlimit": "40"})
+        ts = [m["title"] for m in d.get("query", {}).get("search", [])]
+        if q.startswith("incategory:") is False and not ts: continue
+        out.setdefault(slug, []).extend(ts)
+    for slug, ts in out.items():
+        cands = [c for c in info(list(dict.fromkeys(ts))) if OK_LIC.match(c["license"].strip()) and c["w"] >= 700 and c["thumb"]]
+        for c in cands: c["score"] = score(c)
+        cands.sort(key=lambda c: -c["score"])
+        sheet(slug + "-extra", cands[:n], rows=3)
+        json.dump(cands[:n], open(f"candidates/{slug}-extra.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+
+def sheet(name, top, rows=2):
+    thumbs = []
+    for k, c in enumerate(top):
+        try:
+            url = c["thumb"].replace("/900px-", "/300px-")
+            with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60) as r:
+                im = Image.open(io.BytesIO(r.read())).convert("RGB")
+            im.thumbnail((300, 300)); thumbs.append((k, im))
+        except Exception as e:
+            print("  thumb fail", c["title"], e)
+        time.sleep(0.3)
+    img = Image.new("RGB", (4 * 310, rows * 330), "white")
+    dr = ImageDraw.Draw(img)
+    for k, im in thumbs:
+        x, y = (k % 4) * 310, (k // 4) * 330
+        img.paste(im, (x + 5, y + 25)); dr.text((x + 5, y + 5), f"#{k} {top[k]['license']}", fill="black")
+    img.save(f"candidates/{name}.jpg", quality=80)
+
 def main(only=None, n=8):
     sheets = {}
     for line in open("tools/species.tsv", encoding="utf-8"):
@@ -111,4 +146,5 @@ def main(only=None, n=8):
 
 if __name__ == "__main__":
     import os; os.makedirs("candidates", exist_ok=True)
-    main(sys.argv[1:] or None)
+    if sys.argv[1:] == ["extra"]: extra()
+    else: main(sys.argv[1:] or None)
