@@ -34,6 +34,8 @@ for slug, fr, latin in species:
     assert OK_LIC.match(lic), (slug, title, lic)
     author = strip(em.get("Artist", {}).get("value", "")) or "Auteur inconnu"
     author = re.sub(r"\s*\(talk\)|\s*\(discussion\)", "", author)
+    cite = re.match(r"^(.*?)\s*\(\d{4}\)", author)
+    if cite: author = cite.group(1).split(",")[0] + " et al."
     im = Image.open(io.BytesIO(fetch(ii.get("thumburl") or ii["url"])))
     im = ImageOps.exif_transpose(im).convert("RGB")
     if im.width > 900:

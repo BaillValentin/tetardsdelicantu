@@ -1,0 +1,21 @@
+name: build-images
+on:
+  push:
+    branches: [photos-candidates]
+    paths: [tools/selection.json, tools/build_images.py, .github/workflows/build-images.yml]
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install pillow
+      - run: mkdir -p images && python tools/build_images.py
+      - run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add images CREDITS.md index.html sw.js
+          git commit -m "Build images, credits and offline cache list"
+          git pull --rebase origin photos-candidates
+          git push
