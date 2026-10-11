@@ -1,0 +1,26 @@
+name: verify-live
+on:
+  push:
+    branches: [photos-candidates]
+    paths: [tools/verify.js, .github/workflows/verify.yml]
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm i playwright@1.47.2 && npx playwright install --with-deps chromium
+      - name: wait for Pages deployment
+        run: |
+          for i in $(seq 1 40); do
+            curl -fsS https://baillvalentin.github.io/tetardsdelicantu/ | grep -q 'images/merou-brun.jpg' && exit 0; sleep 15
+          done; exit 1
+      - run: node tools/verify.js https://baillvalentin.github.io/tetardsdelicantu/ | tee candidates/live-report.json
+      - run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add candidates/live-*
+          git commit -m "Live site verification report"
+          git pull --rebase origin photos-candidates
+          git push
