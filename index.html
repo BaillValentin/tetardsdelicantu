@@ -104,7 +104,173 @@
   </div>
 </div>
 <script>
-const CARDS = /*CARDS*/[]/*END*/;
+const CARDS = /*CARDS*/[
+ {
+  "fr": "Mérou brun",
+  "img": "images/merou-brun.jpg",
+  "author": "Diego Delso · CC BY-SA 4.0"
+ },
+ {
+  "fr": "Corb",
+  "img": "images/corb.jpg",
+  "author": "Diego Delso · CC BY-SA 4.0"
+ },
+ {
+  "fr": "Denti",
+  "img": "images/denti.jpg",
+  "author": "Diego Delso · CC BY-SA 4.0"
+ },
+ {
+  "fr": "Barracuda",
+  "img": "images/barracuda.jpg",
+  "author": "Diego Delso · CC BY-SA 4.0"
+ },
+ {
+  "fr": "Sar commun",
+  "img": "images/sar-commun.jpg",
+  "author": "Diego Delso · CC BY-SA 4.0"
+ },
+ {
+  "fr": "Sar à tête noire",
+  "img": "images/sar-tete-noire.jpg",
+  "author": "Diego Delso · CC BY-SA 4.0"
+ },
+ {
+  "fr": "Saupe",
+  "img": "images/saupe.jpg",
+  "author": "Diego Delso · CC BY-SA 4.0"
+ },
+ {
+  "fr": "Castagnole",
+  "img": "images/castagnole.jpg",
+  "author": "Diego Delso · CC BY-SA 4.0"
+ },
+ {
+  "fr": "Girelle commune",
+  "img": "images/girelle-commune.jpg",
+  "author": "Diego Delso · CC BY-SA 4.0"
+ },
+ {
+  "fr": "Girelle paon",
+  "img": "images/girelle-paon.jpg",
+  "author": "Diego Delso · CC BY-SA 4.0"
+ },
+ {
+  "fr": "Serran écriture",
+  "img": "images/serran-ecriture.jpg",
+  "author": "Diego Delso · CC BY-SA 4.0"
+ },
+ {
+  "fr": "Murène",
+  "img": "images/murene.jpg",
+  "author": "Diego Delso · CC BY-SA 4.0"
+ },
+ {
+  "fr": "Congre",
+  "img": "images/congre.jpg",
+  "author": "Smastapee · CC BY-SA 3.0 de"
+ },
+ {
+  "fr": "Rascasse rouge (chapon)",
+  "img": "images/rascasse-rouge.jpg",
+  "author": "Matapexes · CC BY-SA 3.0"
+ },
+ {
+  "fr": "Barbier",
+  "img": "images/barbier.jpg",
+  "author": "Diego Delso · CC BY-SA 4.0"
+ },
+ {
+  "fr": "Rouget de roche",
+  "img": "images/rouget-de-roche.jpg",
+  "author": "Diego Delso · CC BY-SA 4.0"
+ },
+ {
+  "fr": "Poulpe",
+  "img": "images/poulpe.jpg",
+  "author": "Diego Delso · CC BY-SA 4.0"
+ },
+ {
+  "fr": "Seiche",
+  "img": "images/seiche.jpg",
+  "author": "Diego Delso · CC BY-SA 4.0"
+ },
+ {
+  "fr": "Langouste rouge",
+  "img": "images/langouste-rouge.jpg",
+  "author": "Diego Delso · CC BY-SA 4.0"
+ },
+ {
+  "fr": "Cigale de mer",
+  "img": "images/cigale-de-mer.jpg",
+  "author": "Peterkoelbl · CC BY-SA 2.5"
+ },
+ {
+  "fr": "Gorgone rouge",
+  "img": "images/gorgone-rouge.jpg",
+  "author": "This illustration was made by (User:Royonx) and released under the license(s) stated above. You are free to use it for any purpose as long as you credit me and follow the terms of the license. Example : © Michel Royon / Wikimedia Commons If you use this image outside of the Wikimedia projects, I would be happy to hear from you par courriel ( royonx gmail.com). Thanks ! Ce message en français · CC0"
+ },
+ {
+  "fr": "Gorgone jaune",
+  "img": "images/gorgone-jaune.jpg",
+  "author": "Arnaud Abadie · CC BY 3.0"
+ },
+ {
+  "fr": "Corail rouge",
+  "img": "images/corail-rouge.jpg",
+  "author": "RamiAubourg · CC BY-SA 4.0"
+ },
+ {
+  "fr": "Grande nacre",
+  "img": "images/grande-nacre.jpg",
+  "author": "Arnaud Abadie · CC BY 2.0"
+ },
+ {
+  "fr": "Spirographe",
+  "img": "images/spirographe.jpg",
+  "author": "Diego Delso · CC BY-SA 4.0"
+ },
+ {
+  "fr": "Étoile de mer rouge",
+  "img": "images/etoile-de-mer-rouge.jpg",
+  "author": "Diego Delso · CC BY-SA 4.0"
+ },
+ {
+  "fr": "Flabelline",
+  "img": "images/flabelline.jpg",
+  "author": "Eppoh Haras · CC BY-SA 4.0"
+ },
+ {
+  "fr": "Doris dalmatien (vache marine)",
+  "img": "images/doris-dalmatien.jpg",
+  "author": "Cisamarc · CC BY-SA 3.0"
+ },
+ {
+  "fr": "Ver de feu",
+  "img": "images/ver-de-feu.jpg",
+  "author": "Diego Delso · CC BY-SA 4.0"
+ },
+ {
+  "fr": "Anémone verte",
+  "img": "images/anemone-verte.jpg",
+  "author": "Diego Delso · CC BY-SA 4.0"
+ },
+ {
+  "fr": "Posidonie",
+  "img": "images/posidonie.jpg",
+  "author": "Karim saari · CC BY 4.0"
+ },
+ {
+  "fr": "Padine",
+  "img": "images/padine.jpg",
+  "author": "Sofia Sadogurska · CC BY 4.0"
+ },
+ {
+  "fr": "Caulerpe invasive",
+  "img": "images/caulerpe.jpg",
+  "author": "Bachir Bouiadjra B et al. · CC BY 4.0"
+ }
+]/*END*/;
 
 const $ = id => document.getElementById(id);
 let deck = [], pos = 0, missed = [];
