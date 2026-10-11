@@ -74,7 +74,7 @@ def score(c):
     if ar > 2.2 or ar < 0.5: s -= 3
     return s
 
-def extra(n=12):
+def extra(n=16):
     """Targeted searches from tools/extra_queries.tsv (slug<TAB>search query)."""
     out = {}
     for line in open("tools/extra_queries.tsv", encoding="utf-8"):
@@ -88,7 +88,7 @@ def extra(n=12):
         cands = [c for c in info(list(dict.fromkeys(ts))) if OK_LIC.match(c["license"].strip()) and c["w"] >= 700 and c["thumb"]]
         for c in cands: c["score"] = score(c)
         cands.sort(key=lambda c: -c["score"])
-        sheet(slug + "-extra", cands[:n], rows=3)
+        sheet(slug + "-extra", cands[:n], rows=4)
         json.dump(cands[:n], open(f"candidates/{slug}-extra.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
 def sheet(name, top, rows=2):
