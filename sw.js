@@ -1,5 +1,5 @@
 // Met en cache la page et toutes les images pour un usage hors ligne.
-const VERSION = 'cfb0c79969';
+const VERSION = 'd773d22ee0';
 const CACHE = 'especes-corse-' + VERSION;
 const ASSETS = [
  "./",
