@@ -1,14 +1,14 @@
 {
- "cards": 33,
- "loaded": 33,
+ "cards": 58,
+ "loaded": 58,
  "broken": [],
  "decks": 4,
- "gridCount": 33,
+ "gridCount": 58,
  "viewerName": "Mérou brun",
  "zoomable": 1,
  "manifest": "Espèces Corse",
  "sw": "activated",
- "cached": 39,
+ "cached": 64,
  "errs": [],
  "bad": []
 }
