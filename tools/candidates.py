@@ -11,6 +11,9 @@ ALIASES = {
     "Caulerpa cylindracea": ["Caulerpa racemosa var. cylindracea", "Caulerpa racemosa"],
     "Flabellina affinis": ["Paraflabellina affinis"],
     "Sphyraena viridensis": ["Sphyraena"],
+    "Reteporella grimaldii": ["Sertella septentrionalis", "Reteporella"],
+    "Hippocampus guttulatus": ["Hippocampus ramulosus"],
+    "Cratena peregrina": ["Hervia peregrina"],
 }
 BAD = re.compile(r"\b(dead|market|march[eé]|mercado|museum|mus[eé]e|specimen|drawing|illustration|plate|fossil|map|distribution|skeleton|stamp|cooked|food|dish|plat|fried|frozen|fishmonger|poissonnerie|herbarium|preserved|catch|caught|fisherm|aquarium|aquário|acquario|tank|lithograph|engraving|diagram|svg|book|page)\b", re.I)
 GOOD = re.compile(r"(underwater|sous-marin|diving|plong|scuba|snorkel|reef|in situ|habitat|seabed|corse|corsica|mediterr|m[eé]diterran)", re.I)

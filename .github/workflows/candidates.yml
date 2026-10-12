@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: pip install pillow
-      - run: python tools/candidates.py extra
+      - run: python tools/candidates.py $(cat tools/run_slugs.txt)
       - run: |
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
