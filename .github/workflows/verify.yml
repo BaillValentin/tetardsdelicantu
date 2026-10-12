@@ -14,7 +14,7 @@ jobs:
       - name: wait for Pages deployment
         run: |
           for i in $(seq 1 40); do
-            curl -fsS https://baillvalentin.github.io/tetardsdelicantu/ | grep -q "cover: 'poulpe'" && exit 0; sleep 15
+            curl -fsS https://baillvalentin.github.io/tetardsdelicantu/ | grep -q 'saint-pierre' && exit 0; sleep 15
           done; exit 1
       - run: node tools/verify.js https://baillvalentin.github.io/tetardsdelicantu/ | tee candidates/live-report.json
       - run: |
