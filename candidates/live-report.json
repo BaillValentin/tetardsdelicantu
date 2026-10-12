@@ -2,6 +2,8 @@
  "cards": 33,
  "loaded": 33,
  "broken": [],
+ "gridCount": 33,
+ "viewerName": "Mérou brun",
  "manifest": "Espèces Corse",
  "sw": "activated",
  "cached": 39,
