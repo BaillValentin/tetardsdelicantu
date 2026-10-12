@@ -1,5 +1,5 @@
 // Met en cache la page et toutes les images pour un usage hors ligne.
-const VERSION = '53ced9075d';
+const VERSION = '0bfed19cf9';
 const CACHE = 'especes-corse-' + VERSION;
 const ASSETS = [
  "./",
@@ -40,7 +40,32 @@ const ASSETS = [
  "images/anemone-verte.jpg",
  "images/posidonie.jpg",
  "images/padine.jpg",
- "images/caulerpe.jpg"
+ "images/caulerpe.jpg",
+ "images/oblade.jpg",
+ "images/bogue.jpg",
+ "images/crenilabre-paon.jpg",
+ "images/serran-chevre.jpg",
+ "images/tripterygion-jaune.jpg",
+ "images/oursin-violet.jpg",
+ "images/oursin-noir.jpg",
+ "images/holothurie-tubuleuse.jpg",
+ "images/acetabulaire.jpg",
+ "images/sar-museau-pointu.jpg",
+ "images/labre-merle.jpg",
+ "images/apogon.jpg",
+ "images/rascasse-brune.jpg",
+ "images/anemone-encroutante-jaune.jpg",
+ "images/hervia.jpg",
+ "images/bonellie.jpg",
+ "images/mostelle.jpg",
+ "images/seriole.jpg",
+ "images/torpille-marbree.jpg",
+ "images/poisson-lune.jpg",
+ "images/hippocampe-mouchete.jpg",
+ "images/homard.jpg",
+ "images/cerianthe.jpg",
+ "images/dentelle-de-neptune.jpg",
+ "images/saint-pierre.jpg"
 ];
 
 self.addEventListener('install', e => {
