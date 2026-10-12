@@ -7,6 +7,9 @@ const { chromium, devices } = require('playwright');
   const errs = []; p.on('pageerror', e => errs.push(e.message));
   const bad = []; p.on('response', r => { if (r.status() >= 400) bad.push(r.status() + ' ' + r.url()); });
   await p.goto(url, { waitUntil: 'networkidle' });
+  await p.screenshot({ path: 'candidates/live-home.png' });
+  const decks = await p.locator('.deck').count();
+  await p.locator('.deck').nth(3).tap(); await p.waitForTimeout(300);
   await p.screenshot({ path: 'candidates/live-front.png' });
   await p.tap('#card'); await p.waitForTimeout(700);
   await p.screenshot({ path: 'candidates/live-back.png' });
@@ -14,6 +17,7 @@ const { chromium, devices } = require('playwright');
   await p.screenshot({ path: 'candidates/live-grid.png' });
   await p.locator('#grid img').nth(0).tap(); await p.waitForTimeout(400);
   const viewerName = await p.textContent('#vName');
+  const zoomable = await p.locator('#zoom').count();
   await p.screenshot({ path: 'candidates/live-viewer.png' });
   const gridCount = await p.locator('#grid img').count();
   const imgs = await p.evaluate(() => Promise.all(CARDS.map(c => new Promise(r => {
@@ -22,6 +26,6 @@ const { chromium, devices } = require('playwright');
   const sw = await p.evaluate(async () => { const r = await navigator.serviceWorker.ready; return r.active.state; });
   const cached = await p.evaluate(async () => { const k = await caches.keys(); const c = await caches.open(k[0]); return (await c.keys()).length; });
   console.log(JSON.stringify({ cards: imgs.length, loaded: imgs.filter(x => x[1] > 0).length,
-    broken: imgs.filter(x => !x[1]), gridCount, viewerName, manifest, sw, cached, errs, bad }, null, 1));
+    broken: imgs.filter(x => !x[1]), decks, gridCount, viewerName, zoomable, manifest, sw, cached, errs, bad }, null, 1));
   await b.close();
 })();
